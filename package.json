@@ -1,0 +1,32 @@
+{
+  "name": "foodfactory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hari1009/Foodfactory-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hari1009/Foodfactory-node/issues"
+  },
+  "homepage": "https://github.com/hari1009/Foodfactory-node#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "generate-password": "^1.5.1",
+    "http": "0.0.1-security",
+    "path": "^0.12.7",
+    "pg": "^8.3.0",
+    "pug": "^3.0.0",
+    "querystring": "^0.2.0",
+    "swagger-ui-express": "^4.1.4",
+    "url": "^0.11.0"
+  }
+}

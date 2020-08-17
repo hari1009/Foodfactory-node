@@ -1,0 +1,1822 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the swagger documentation for the food factory project",
+    "version": "1.0.0",
+    "title": "Food Factory",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "srihariram1009@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "User",
+      "description": "Operations for User"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/user/signup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Sign up to the application",
+        "description": "",
+        "operationId": "signup",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string",
+            "description": "Enter the name which is used to signup",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "useremail",
+            "type": "string",
+            "format": "email",
+            "required": true,
+            "description": "Enter the email which is used to signup"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Error message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/signin": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Sign in to the application",
+        "description": "",
+        "operationId": "signin",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string",
+            "description": "Enter the user mail which is used to signin",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "password",
+            "type": "string",
+            "format": "string",
+            "required": true,
+            "description": "Enter the password which is used to signin"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "userid": {
+                        "type": "integer",
+                        "description": "unique id of the user"
+                      },
+                      "email": {
+                        "type": "string",
+                        "description": "Unique email of the user"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the user"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/updatepassword": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Change the password",
+        "description": "",
+        "operationId": "passwordupdate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string",
+            "description": "Enter the user mail which is used to signin",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "oldpassword",
+            "type": "string",
+            "format": "string",
+            "required": true,
+            "description": "Enter the current password which is used to signin"
+          },
+          {
+            "in": "query",
+            "name": "newpassword",
+            "type": "string",
+            "format": "string",
+            "required": true,
+            "description": "Enter the new password "
+          },
+          {
+            "in": "query",
+            "name": "confirmpassword",
+            "type": "string",
+            "format": "string",
+            "required": true,
+            "description": "Enter the new password again"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/resetpassword": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Reset the password",
+        "description": "",
+        "operationId": "resetpassword",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string",
+            "description": "Enter the user mail which is used to signin",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/updatestatus": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Deactivate User",
+        "description": "",
+        "operationId": "Userdeactive",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userid",
+            "type": "integer",
+            "description": "The user id of the user",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/createorder": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Create a order",
+        "description": "",
+        "operationId": "order_create",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "delivery_date",
+            "type": "string",
+            "format": "date",
+            "description": "When the order should be delivered",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "mode",
+            "type": "string",
+            "description": "Mode of transport",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "orderedby",
+            "type": "integer",
+            "description": "User id of user that ordered",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "type": "string",
+            "description": "list of selected items as a object",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/updateorder": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "update a order",
+        "description": "",
+        "operationId": "order_update",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "delivery_date",
+            "type": "string",
+            "format": "date",
+            "description": "When the order should be delivered",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "mode",
+            "type": "string",
+            "description": "Mode of transport",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "orderedby",
+            "type": "integer",
+            "description": "User id of user that ordered",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "type": "string",
+            "description": "list of selected items as a object",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "type": "boolean",
+            "description": "Status of the order",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "orderid",
+            "type": "integer",
+            "description": "Unique id of the order",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/deleteorder": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "delete a order",
+        "description": "",
+        "operationId": "delete_order",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "orderid",
+            "type": "integer",
+            "description": "Unique id of the order",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/getorder": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get all orders irrespective of users",
+        "description": "",
+        "operationId": "get_all_orders",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "orderid",
+            "type": "integer",
+            "description": "Unique id of the order",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "orderNum": {
+                        "type": "integer",
+                        "description": "unique id of the order"
+                      },
+                      "orderdate": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of order"
+                      },
+                      "status": {
+                        "type": "boolean",
+                        "description": "status of order"
+                      },
+                      "dateofdelivery": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of delivery"
+                      },
+                      "ordered_by": {
+                        "type": "integer",
+                        "description": "unique id of the ordered user"
+                      },
+                      "items": {
+                        "type": "string",
+                        "description": "list of the items ordered"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order/getorderbaseduser": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "get all orders for the user",
+        "description": "",
+        "operationId": "get_all_orders_based_userid",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userid",
+            "type": "integer",
+            "description": "Unique id of the user",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "orderNum": {
+                        "type": "integer",
+                        "description": "unique id of the order"
+                      },
+                      "orderdate": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of order"
+                      },
+                      "status": {
+                        "type": "boolean",
+                        "description": "status of order"
+                      },
+                      "dateofdelivery": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of delivery"
+                      },
+                      "ordered_by": {
+                        "type": "integer",
+                        "description": "unique id of the ordered user"
+                      },
+                      "items": {
+                        "type": "string",
+                        "description": "list of the items ordered"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ingredients/createingredient": {
+      "post": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "create a ingredient",
+        "description": "",
+        "operationId": "insert_ingredient",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "availableq",
+            "type": "number",
+            "description": "Available quantity",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "threshold",
+            "type": "number",
+            "description": "Threshold quantity",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "price",
+            "type": "number",
+            "description": "Price of ingredient",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "vendorname",
+            "type": "string",
+            "description": "Name of Vendor",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "vendoremail",
+            "type": "string",
+            "format": "email",
+            "description": "Email of the vendor",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "description": "name of ingredient",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "lotnumber",
+            "type": "number",
+            "description": "lotnumber",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ingredients/updateingredient": {
+      "post": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "update a ingredient",
+        "description": "",
+        "operationId": "update_ingredient",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ingredientid",
+            "type": "number",
+            "description": "Unique id of the ingredient",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "availableq",
+            "type": "number",
+            "description": "Available quantity",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "threshold",
+            "type": "number",
+            "description": "Threshold quantity",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "price",
+            "type": "number",
+            "description": "Price of ingredient",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "vendorname",
+            "type": "string",
+            "description": "Name of Vendor",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "vendoremail",
+            "type": "string",
+            "format": "email",
+            "description": "Email of the vendor",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "description": "name of ingredient",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "lotnumber",
+            "type": "number",
+            "description": "lotnumber",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ingredients/deleteingredient": {
+      "post": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "delete a ingredient",
+        "description": "",
+        "operationId": "delete_ingredient",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ingredientid",
+            "type": "number",
+            "description": "Unique id of the ingredient",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ingredients/getingredient": {
+      "post": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "get ingredients",
+        "description": "",
+        "operationId": "get_ingredient",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "ingredientid",
+            "type": "number",
+            "description": "Unique id of the ingredient",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ingredientid": {
+                        "type": "integer",
+                        "description": "unique id of the ingredient"
+                      },
+                      "availablequantity": {
+                        "type": "number",
+                        "description": "Available quantity of ingredient"
+                      },
+                      "lotnumber": {
+                        "type": "number",
+                        "description": "lotnumber"
+                      },
+                      "thresholdquantity": {
+                        "type": "number",
+                        "description": "Threshold quantity of ingredient"
+                      },
+                      "price": {
+                        "type": "integer",
+                        "description": "Price of the ingredient"
+                      },
+                      "vendorname": {
+                        "type": "string",
+                        "description": "Name of the Vendor"
+                      },
+                      "vendoremail": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Email of the vendor"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ingredients/getingrediends_less_quantity": {
+      "get": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "get ingredients having quantity less than threshold",
+        "description": "",
+        "operationId": "getingrediends_less_quantity",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ingredientid": {
+                        "type": "integer",
+                        "description": "unique id of the ingredient"
+                      },
+                      "availablequantity": {
+                        "type": "number",
+                        "description": "Available quantity of ingredient"
+                      },
+                      "lotnumber": {
+                        "type": "number",
+                        "description": "lotnumber"
+                      },
+                      "thresholdquantity": {
+                        "type": "number",
+                        "description": "Threshold quantity of ingredient"
+                      },
+                      "price": {
+                        "type": "integer",
+                        "description": "Price of the ingredient"
+                      },
+                      "vendorname": {
+                        "type": "string",
+                        "description": "Name of the Vendor"
+                      },
+                      "vendoremail": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Email of the vendor"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ingredients/getingrediends_vendor": {
+      "post": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "get ingredients based on vendor",
+        "description": "",
+        "operationId": "getingrediends_vendor",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "vendoremail",
+            "type": "string",
+            "format": "email",
+            "description": "Unique id of the ingredient",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ingredientid": {
+                        "type": "integer",
+                        "description": "unique id of the ingredient"
+                      },
+                      "availablequantity": {
+                        "type": "number",
+                        "description": "Available quantity of ingredient"
+                      },
+                      "lotnumber": {
+                        "type": "number",
+                        "description": "lotnumber"
+                      },
+                      "thresholdquantity": {
+                        "type": "number",
+                        "description": "Threshold quantity of ingredient"
+                      },
+                      "price": {
+                        "type": "integer",
+                        "description": "Price of the ingredient"
+                      },
+                      "vendorname": {
+                        "type": "string",
+                        "description": "Name of the Vendor"
+                      },
+                      "vendoremail": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Email of the vendor"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/food/createfood": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "Create a food",
+        "description": "",
+        "operationId": "insert_food",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "description": "Name of the food",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "cuisine",
+            "type": "string",
+            "description": "Type of cuisine",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "ingredients",
+            "type": "string",
+            "description": "List of ingredients",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "lotnumber",
+            "type": "number",
+            "description": "lotnumber",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "costofprod",
+            "type": "number",
+            "description": "Production cost of food",
+            "required": true
+          },
+          {
+            "in": "query",
+            "type": "number",
+            "name": "sellingcost",
+            "description": "Selling cost of food",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/food/updatefood": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "Update a food",
+        "description": "",
+        "operationId": "updatefood",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "foodid",
+            "type": "number",
+            "description": "Unique id of the food",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "description": "Name of the food",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "cuisine",
+            "type": "string",
+            "description": "Type of cuisine",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "ingredients",
+            "type": "string",
+            "description": "List of ingredients",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "lotnumber",
+            "type": "number",
+            "description": "lotnumber",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "costofprod",
+            "type": "number",
+            "description": "Production cost of food",
+            "required": true
+          },
+          {
+            "in": "query",
+            "type": "number",
+            "name": "sellingcost",
+            "description": "Selling cost of food",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/food/deletefood": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "Delete a food",
+        "description": "",
+        "operationId": "deletefood",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "foodid",
+            "type": "number",
+            "description": "Unique id of the food",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/food/getallfoods": {
+      "post": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "get all foods",
+        "description": "",
+        "operationId": "getallfood",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "foodid",
+            "type": "number",
+            "description": "Unique id of the food",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "foodid": {
+                        "type": "integer",
+                        "description": "unique id of the Food"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the food"
+                      },
+                      "cuisine": {
+                        "type": "string",
+                        "description": "cusisine of the food"
+                      },
+                      "ingredients": {
+                        "type": "string",
+                        "description": "List of ingredients"
+                      },
+                      "lotnumber": {
+                        "type": "integer",
+                        "description": "lotnumber"
+                      },
+                      "costofproduction": {
+                        "type": "number",
+                        "description": "Cost of production of food"
+                      },
+                      "sellingcost": {
+                        "type": "number",
+                        "description": "Selling cost of food"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/food/food_sold_lost": {
+      "get": {
+        "tags": [
+          "Food"
+        ],
+        "summary": "Get list of food sold at loss",
+        "description": "",
+        "operationId": "food_sold_lost",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "foodid": {
+                        "type": "integer",
+                        "description": "unique id of the Food"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the food"
+                      },
+                      "cuisine": {
+                        "type": "string",
+                        "description": "cusisine of the food"
+                      },
+                      "ingredients": {
+                        "type": "string",
+                        "description": "List of ingredients"
+                      },
+                      "lotnumber": {
+                        "type": "integer",
+                        "description": "lotnumber"
+                      },
+                      "costofproduction": {
+                        "type": "number",
+                        "description": "Cost of production of food"
+                      },
+                      "sellingcost": {
+                        "type": "number",
+                        "description": "Selling cost of food"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "A User object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "Return code."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Success message."
+                },
+                "data": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
